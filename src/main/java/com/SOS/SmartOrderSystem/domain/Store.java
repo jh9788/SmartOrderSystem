@@ -1,11 +1,11 @@
 package com.SOS.SmartOrderSystem.domain;
 
 public class Store {
-    private long ID;
+    private long id;
     private String name;
 
-    public Store(long ID, String name) {
-        this.ID = ID;
+    public Store(long id, String name) {
+        this.id = id;
         this.name = name;
     }
 }
