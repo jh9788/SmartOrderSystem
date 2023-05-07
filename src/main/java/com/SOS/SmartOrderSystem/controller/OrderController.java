@@ -1,5 +1,6 @@
-package com.SOS.SmartOrderSystem.Controller;
+package com.SOS.SmartOrderSystem.controller;
 
+import com.SOS.SmartOrderSystem.domain.Menu;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -21,7 +22,13 @@ public class OrderController {
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("menu_rq", requestDto);
         return map;*/
+        String name = (String)map.get("name");
+        int price = (int)map.get("price");
 
+        Menu menu = new Menu(name, price);
+
+        System.out.println("menu.getName() = " + menu.getName());
+        System.out.println("menu.getPrice() = " + menu.getPrice());
         System.out.println("map = " + map);
 
         return map;

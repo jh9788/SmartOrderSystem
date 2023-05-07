@@ -3,16 +3,11 @@ package com.SOS.SmartOrderSystem.domain;
 public class Menu {
 
     private String name;
-    private String price;
+    private long price;
 
-
-    public Menu(String name, String price) {
+    public Menu(String name, long price) {
         this.name = name;
         this.price = price;
-    }
-
-    public String getPrice() {
-        return price;
     }
 
     public String getName() {
@@ -23,7 +18,11 @@ public class Menu {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
         this.price = price;
     }
 }
