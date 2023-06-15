@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface MenuService {
     void join(Menu menu);
 
-    Order findOrder(Long menuId);
+    Menu findMenu(Long menuId);
 }

@@ -15,7 +15,7 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
-    public Order findOrder(Long menuId) {
+    public Menu findMenu(Long menuId) {
         return null;
     }
 }
