@@ -18,11 +18,11 @@ public class Owner {
         this.phoneNumber = phoneNumber;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -8,12 +8,12 @@ import java.util.*;
 @Repository
 public class MemoryOwnerRepository implements OwnerRepository{
 
-    private static Map<Long, Owner> store = new HashMap<>();
+    private static Map<String, Owner> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override
     public Owner save(Owner owner) {
-        owner.setId(++sequence);
+
         store.put(owner.getId(), owner);
 
         return owner;

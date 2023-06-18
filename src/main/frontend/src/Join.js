@@ -29,17 +29,19 @@ function Join() {
     function gohome(){
         movePage('/Home');
 
-    axios.post('/api/owner', formData)
-            .then(function(response) {
+    }
+
+    function handleOrderClick(name, username, password, email, phone, gender) {
+        axios.post('/api/Join', formData)
+            .then(function (response) {
                 console.log(response.data);
                 alert("회원가입이 완료되었습니다!");
-                window.location.href = "메인화면.html";
+                //window.location.href = "메인화면.html";
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.log(error);
             });
     }
-
     return(
         <div id="join">
             <h1>회원가입</h1>
@@ -120,7 +122,7 @@ function Join() {
                         /> 여성
                     </label>
                 </div>
-                <button type="submit">가입하기</button>
+                <button onClick={()=>handleOrderClick(name, username, password, email, phone, gender)}>가입하기</button>
             </form>
 
 
