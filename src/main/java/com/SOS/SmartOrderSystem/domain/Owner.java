@@ -1,5 +1,6 @@
 package com.SOS.SmartOrderSystem.domain;
 
+
 public class Owner {
     private String id;
     private String password;

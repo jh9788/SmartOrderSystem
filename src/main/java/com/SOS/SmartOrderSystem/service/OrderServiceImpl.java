@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findMembers() {
         return orderRepository.findAll();
     }
-
+    
     public Optional<Order> findOne(Long memberId){
         return orderRepository.findById(memberId);
     }
