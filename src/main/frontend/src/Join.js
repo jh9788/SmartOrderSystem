@@ -1,5 +1,6 @@
 
 import axios from 'axios';
+import './Join.css';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +8,7 @@ function Join() {
 
     const movePage = useNavigate();
     const [name, setName] = useState('');
-    const [username, setUsername] = useState('');
+    const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -20,7 +21,7 @@ function Join() {
     }
     const formData = {
         name: name,
-        username: username,
+        id: id,
         password: password,
         email: email,
         phone: phone,
@@ -31,12 +32,12 @@ function Join() {
 
     }
 
-    function handleOrderClick(name, username, password, email, phone, gender) {
-        axios.post('/api/Join', formData)
+    function handleOrderClick(name, id, password, email, phone, gender) {
+        axios.post('/api/join', formData)
             .then(function (response) {
                 console.log(response.data);
                 alert("회원가입이 완료되었습니다!");
-                //window.location.href = "메인화면.html";
+                movePage('/Home');
             })
             .catch(function (error) {
                 console.log(error);
@@ -58,13 +59,13 @@ function Join() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="username">아이디:</label>
+                    <label htmlFor="id">아이디:</label>
                     <input
                         type="text"
-                        id="username"
-                        name="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        id="id"
+                        name="id"
+                        value={id}
+                        onChange={(e) => setId(e.target.value)}
                         required
                     />
                 </div>
@@ -122,7 +123,7 @@ function Join() {
                         /> 여성
                     </label>
                 </div>
-                <button onClick={()=>handleOrderClick(name, username, password, email, phone, gender)}>가입하기</button>
+                <button onClick={()=>handleOrderClick(name, id, password, email, phone, gender)}>가입하기</button>
             </form>
 
 

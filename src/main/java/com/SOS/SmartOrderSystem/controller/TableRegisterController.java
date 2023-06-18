@@ -31,6 +31,11 @@ public class TableRegisterController {
     public ResponseEntity<byte[]> generateQRCode(@RequestParam("url") String url) throws WriterException, IOException {
         int width = 500;
         int height = 500;
+
+        url = "www.SmartOrderSystem.com/" + "storeName/" + url;
+
+        System.out.println("url = " + url);
+
         BitMatrix matrix = new MultiFormatWriter().encode(url, BarcodeFormat.QR_CODE, width, height);
 
         MatrixToImageConfig config = new MatrixToImageConfig(MatrixToImageConfig.BLACK, -1);

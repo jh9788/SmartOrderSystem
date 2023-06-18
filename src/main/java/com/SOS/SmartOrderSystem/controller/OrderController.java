@@ -34,7 +34,9 @@ public class OrderController {
 
         Optional<Menu> foundMenu = menuRepository.findByName(name);
         Order order = new Order(++sequence, 1, foundMenu.get().getId(),1, 1);
+
         orderService.join(order);
+
 
         System.out.println("order.getId() = " + order.getId());
         System.out.println("order.getStoreId() = " + order.getStoreId());

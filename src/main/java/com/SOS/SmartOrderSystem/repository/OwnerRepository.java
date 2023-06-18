@@ -9,5 +9,6 @@ public interface OwnerRepository {
     Owner save(Owner owner);
     Optional<Owner> findById(String id);
 
+    boolean isAccountValid(String id, String password);
     List<Owner> findAll();
 }

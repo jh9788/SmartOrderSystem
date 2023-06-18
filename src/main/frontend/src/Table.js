@@ -10,16 +10,21 @@ function Table() {
     function gohome(){
         movePage('/Home');
     }
+
+    function goOrder(){
+        movePage('/Order');
+    }
     const handlePrint = () => {
         window.print();
     };
     return(
         <div id="table">
-            table 입니다.
             <div id = "gohome">
-                <button onClick={gohome}>홈으로이동</button>
+                <button onClick={gohome}>홈으로</button>
+                <button onClick={goOrder}>메뉴판으로</button>
             </div>
-            <h1>역전승환이맥주 QR코드</h1>
+            <h1>(가게이름) QR코드 등록</h1>
+            <h2>테이블 이름 입력</h2>
         <ImageComponent />
 
             <div id="qrCodeContainer"></div>
