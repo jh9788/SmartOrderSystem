@@ -2,8 +2,10 @@ package com.SOS.SmartOrderSystem.controller;
 import com.SOS.SmartOrderSystem.domain.Menu;
 import com.SOS.SmartOrderSystem.domain.Order;
 import com.SOS.SmartOrderSystem.domain.Owner;
+import com.SOS.SmartOrderSystem.domain.dto.OwnerParam;
 import com.SOS.SmartOrderSystem.repository.OwnerRepository;
 import com.SOS.SmartOrderSystem.service.OwnerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/api")
 public class OwnerController {
@@ -36,19 +39,9 @@ public class OwnerController {
     }
 
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody HashMap<String, Object> map) {
+    public ResponseEntity<String> join(@RequestBody Owner owner) {
 
-        String name = (String)map.get("name");
-        String id = (String)map.get("id");
-        String password = (String)map.get("password");
-        String email = (String)map.get("email");
-        String phone = (String)map.get("phone");
-        String gender = (String)map.get("gender");
-
-        System.out.println("map = " + map);
-
-        //Optional<Owner> foundOwner = ownerRepository.findById(name);
-        Owner owner = new Owner(id, password, name, gender,email, phone);
+        log.info("owner joined={}", owner);
 
         boolean join = ownerService.join(owner);
 
@@ -59,31 +52,19 @@ public class OwnerController {
             return new ResponseEntity<String>("Join failed", HttpStatus.UNAUTHORIZED);
         }
 
-
-
-/*        System.out.println("owner.getId() = " + owner.getId());
-        System.out.println("owner.getEmail() = " + owner.getName());
-        System.out.println("owner.getPassword() = " + owner.getPassword());
-        System.out.println("owner.getEmail() = " + owner.getEmail());
-        System.out.println("owner.getPhoneNumber() = " + owner.getPhoneNumber());
-        System.out.println("owner.getSex() = " + owner.getSex());*/
-
-
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody HashMap<String, Object> map) {
+    public ResponseEntity<String> login(@RequestBody OwnerParam ownerParam) {
 
 
-        String id = (String)map.get("id");
-        String password = (String)map.get("password");
 
+        log.info("owner logined={}", ownerParam);
 
-        System.out.println("map = " + map);
 
         //Optional<Owner> foundOwner = ownerRepository.findById(id);
 
-        boolean accountValid = ownerRepository.isAccountValid(id, password);
+        boolean accountValid = ownerRepository.isAccountValid(ownerParam.getId(), ownerParam.getPassword());
 
         // HttpResponse 객체 생성
         //HttpResponse<String> response = ("OK", "200")

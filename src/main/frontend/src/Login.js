@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {HttpStatusCode} from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Login.css';
@@ -30,7 +30,7 @@ function Login() {
                     alert("로그인 성공");
                     goTable();
                 }
-                else if(response.status === 401) {
+                else if(response.status === HttpStatusCode.Unauthorized  && response.status === HttpStatusCode.InternalServerError) {
                     console.log("아이디나 비밀번호를 확인하세요");
                     alert("아이디나 비밀번호를 확인하세요");
                 }

@@ -4,8 +4,9 @@ import Login from './Login';
 import Table from './Table';
 import Order from './Order';
 import Join from './Join';
-
+import React from "react";
 function App(){
+
     return(
         <BrowserRouter>
             <Routes>
@@ -18,6 +19,8 @@ function App(){
             {/*
             <div id = "mainHome">
                 <Link to="/Home">home 컴포넌트 띄우기</Link>
+            </div>
+
             </div>
             <div id = "mainLogin">
                 <Link to="/Login">login 컴포넌트 띄우기</Link>

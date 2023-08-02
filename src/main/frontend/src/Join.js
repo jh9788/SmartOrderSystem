@@ -11,7 +11,7 @@ function Join() {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
 
     const handleSubmit = (event) => {
@@ -24,7 +24,7 @@ function Join() {
         id: id,
         password: password,
         email: email,
-        phone: phone,
+        phone: phoneNumber,
         gender: gender
     };
     function gohome(){
@@ -32,7 +32,7 @@ function Join() {
 
     }
 
-    function handleOrderClick(name, id, password, email, phone, gender) {
+    function handleOrderClick(name, id, password, email, phoneNumber, gender) {
         axios.post('/api/join', formData)
             .then(function (response) {
                 console.log(response.data);
@@ -92,13 +92,13 @@ function Join() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="phone">휴대폰 번호:</label>
+                    <label htmlFor="phoneNumber">휴대폰 번호:</label>
                     <input
                         type="text"
-                        id="phone"
-                        name="phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        id="phoneNumber"
+                        name="phoneNumber"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
                         required
                     />
                 </div>
@@ -123,7 +123,7 @@ function Join() {
                         /> 여성
                     </label>
                 </div>
-                <button onClick={()=>handleOrderClick(name, id, password, email, phone, gender)}>가입하기</button>
+                <button onClick={()=>handleOrderClick(name, id, password, email, phoneNumber, gender)}>가입하기</button>
             </form>
 
 
