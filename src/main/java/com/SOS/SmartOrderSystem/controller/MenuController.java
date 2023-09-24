@@ -2,17 +2,23 @@ package com.SOS.SmartOrderSystem.controller;
 
 import com.SOS.SmartOrderSystem.domain.Menu;
 import com.SOS.SmartOrderSystem.repository.MenuRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaMenuRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class MenuController {
-    private final MenuRepository menuRepository;
+    private final JpaMenuRepository menuRepository;
 
     @Autowired
-    public MenuController(MenuRepository menuRepository) {
+    public MenuController(JpaMenuRepository menuRepository) {
         this.menuRepository = menuRepository;
 
+    }
+
+    @PostConstruct
+    public void init(){
         Menu menu1 = new Menu(1, "곱창전골", 30000);
         Menu menu2 = new Menu(2, "후라이드치킨", 20000);
         Menu menu3 = new Menu(3, "떡볶이", 18000);
@@ -32,8 +38,6 @@ public class MenuController {
         this.menuRepository.save(menu7);
         this.menuRepository.save(menu8);
         this.menuRepository.save(menu9);
-
     }
-
 
 }

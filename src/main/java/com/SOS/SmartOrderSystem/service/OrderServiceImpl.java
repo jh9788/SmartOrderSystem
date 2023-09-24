@@ -3,6 +3,7 @@ package com.SOS.SmartOrderSystem.service;
 import com.SOS.SmartOrderSystem.domain.Order;
 import com.SOS.SmartOrderSystem.repository.MenuRepository;
 import com.SOS.SmartOrderSystem.repository.OrderRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaMenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,10 @@ import java.util.Optional;
 public class OrderServiceImpl implements OrderService {
 
     private final OrderRepository orderRepository;
-    private final MenuRepository menuRepository;
+    private final JpaMenuRepository menuRepository;
 
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository, MenuRepository menuRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, JpaMenuRepository menuRepository) {
         this.orderRepository = orderRepository;
         this.menuRepository = menuRepository;
     }

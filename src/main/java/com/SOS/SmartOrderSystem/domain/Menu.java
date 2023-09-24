@@ -1,11 +1,17 @@
 package com.SOS.SmartOrderSystem.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
+@Table(name = "menu_table")
 @Getter @Setter
 public class Menu {
 
+    @Id
     private long id;
     private String name;
     private long price;
@@ -16,4 +22,5 @@ public class Menu {
         this.price = price;
     }
 
+    public Menu(){};
 }
