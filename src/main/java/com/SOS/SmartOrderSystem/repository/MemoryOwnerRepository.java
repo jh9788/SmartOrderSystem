@@ -7,15 +7,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
-
-@Repository
+//@Repository
 public class MemoryOwnerRepository implements OwnerRepository{
 
     private static Map<String, Owner> store = new HashMap<>();
 
 
     //이거 제대로 작동하는지 의심됨
-    @Autowired
+    //@Autowired
     private ApplicationContext ac;
 
 

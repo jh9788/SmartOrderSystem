@@ -4,6 +4,7 @@ import com.SOS.SmartOrderSystem.domain.Order;
 import com.SOS.SmartOrderSystem.domain.Owner;
 import com.SOS.SmartOrderSystem.domain.dto.OwnerParam;
 import com.SOS.SmartOrderSystem.repository.OwnerRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaOwnerRepository;
 import com.SOS.SmartOrderSystem.service.OwnerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +29,12 @@ import java.util.Optional;
 public class OwnerController {
 
     private final OwnerService ownerService;
-    private final OwnerRepository ownerRepository;
+    private final JpaOwnerRepository ownerRepository;
 
     static long sequence = 0L;
 
     @Autowired
-    public OwnerController(OwnerService ownerService, OwnerRepository ownerRepository) {
+    public OwnerController(OwnerService ownerService, JpaOwnerRepository ownerRepository) {
         this.ownerService = ownerService;
         this.ownerRepository = ownerRepository;
     }
@@ -43,7 +44,7 @@ public class OwnerController {
 
         log.info("owner joined={}", owner);
 
-        boolean join = ownerService.join(owner);
+      boolean join = ownerService.join(owner);
 
         if(join == true){
             return new ResponseEntity<String>("Join successful", HttpStatus.OK);
@@ -58,7 +59,7 @@ public class OwnerController {
     public ResponseEntity<String> login(@RequestBody OwnerParam ownerParam) {
 
 
-
+/*
         log.info("owner logined={}", ownerParam);
 
 
@@ -79,7 +80,8 @@ public class OwnerController {
         else{
             return new ResponseEntity<String>("Login failed", HttpStatus.UNAUTHORIZED);
         }
-
+*/
+        return new ResponseEntity<String>("Login successful", HttpStatus.OK);
     }
 
 }

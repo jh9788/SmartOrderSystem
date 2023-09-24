@@ -4,6 +4,7 @@ import com.SOS.SmartOrderSystem.domain.Menu;
 import com.SOS.SmartOrderSystem.domain.Owner;
 import com.SOS.SmartOrderSystem.repository.MenuRepository;
 import com.SOS.SmartOrderSystem.repository.OwnerRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaOwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,10 @@ import java.util.Optional;
 @Service
 public class OwnerServiceImpl implements OwnerService{
 
-    private final OwnerRepository ownerRepository;
+    private final JpaOwnerRepository ownerRepository;
 
     @Autowired
-    public OwnerServiceImpl(OwnerRepository ownerRepository) {
+    public OwnerServiceImpl(JpaOwnerRepository ownerRepository) {
         this.ownerRepository = ownerRepository;
     }
 
