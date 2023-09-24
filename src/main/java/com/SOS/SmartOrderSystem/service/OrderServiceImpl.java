@@ -4,6 +4,8 @@ import com.SOS.SmartOrderSystem.domain.Order;
 import com.SOS.SmartOrderSystem.repository.MenuRepository;
 import com.SOS.SmartOrderSystem.repository.OrderRepository;
 import com.SOS.SmartOrderSystem.repository.jpa.JpaMenuRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaOrderRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +13,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final OrderRepository orderRepository;
+    private final JpaOrderRepository orderRepository;
     private final JpaMenuRepository menuRepository;
 
-    @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository, JpaMenuRepository menuRepository) {
-        this.orderRepository = orderRepository;
-        this.menuRepository = menuRepository;
-    }
+
 
     @Override
     public void join(Order order) {

@@ -1,10 +1,16 @@
 package com.SOS.SmartOrderSystem.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
+@Table(name = "order_table")
 @Getter @Setter
 public class Order {
+    @Id
     private long id;
     private int quantity;
     private long menuId;
