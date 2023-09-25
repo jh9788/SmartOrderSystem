@@ -27,8 +27,8 @@ function Join() {
         phone: phoneNumber,
         gender: gender
     };
-    function gohome(){
-        movePage('/Home');
+    function goMain(){
+        movePage('/main');
 
     }
 
@@ -37,7 +37,7 @@ function Join() {
             .then(function (response) {
                 console.log(response.data);
                 alert("회원가입이 완료되었습니다!");
-                movePage('/Home');
+                movePage('/main');
             })
             .catch(function (error) {
                 console.log(error);
@@ -45,7 +45,20 @@ function Join() {
     }
     return(
         <div id="join">
-            <h1>회원가입</h1>
+            <div id="head">
+            <h1>Smart Order System</h1>
+            </div>
+
+            <div id = "go-main">
+                <button onClick={goMain}>홈으로</button>
+            </div>
+
+
+
+            <div id="title">
+                <h1>Sign Up</h1>
+            </div>
+
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">이름:</label>
@@ -56,6 +69,7 @@ function Join() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        placeholder="Name"
                     />
                 </div>
                 <div className="form-group">
@@ -67,6 +81,7 @@ function Join() {
                         value={id}
                         onChange={(e) => setId(e.target.value)}
                         required
+                        placeholder="ID"
                     />
                 </div>
                 <div className="form-group">
@@ -78,6 +93,7 @@ function Join() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        placeholder="Password"
                     />
                 </div>
                 <div className="form-group">
@@ -89,6 +105,7 @@ function Join() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        placeholder="E-Mail"
                     />
                 </div>
                 <div className="form-group">
@@ -100,6 +117,7 @@ function Join() {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
+                        placeholder="Phone"
                     />
                 </div>
                 <div className="form-group">
@@ -123,15 +141,17 @@ function Join() {
                         /> 여성
                     </label>
                 </div>
+                <div id="join-button">
                 <button onClick={()=>handleOrderClick(name, id, password, email, phoneNumber, gender)}>가입하기</button>
+                </div>
             </form>
-
-
-
-
-            <div id = "gohome">
-                <button onClick={gohome}>홈으로이동</button>
+            <div id="company-info">
+                대표: 하종훈/ 주소: 서울특별시 마포구 와우산로 94 홍익대학교
             </div>
+
+
+
+
 
         </div>
 

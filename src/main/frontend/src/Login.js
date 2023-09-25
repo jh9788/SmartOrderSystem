@@ -8,11 +8,11 @@ function Login() {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
-    function gohome(){
-        movePage('/Home');
+    function goMain(){
+        movePage('/main');
     }
     function goTable(){
-        movePage('/Table');
+        movePage('/table');
     }
 
     const handleSubmit = (event) => {
@@ -42,7 +42,12 @@ function Login() {
 
     return(
         <div id="login">
-            <h1>로그인</h1>
+            <div id="head">
+            <h1>Smart Order System</h1>
+            </div>
+            <div id = "go-main">
+                <button onClick={goMain}>홈으로</button>
+            </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="id">아이디:</label>
@@ -66,9 +71,13 @@ function Login() {
                         required
                     />
                 </div>
+                <div id={"login-button"}>
                 <button type="submit">로그인</button>
+                </div>
             </form>
-
+            <div id="company-info">
+                대표: 하종훈/ 주소: 서울특별시 마포구 와우산로 94 홍익대학교
+            </div>
         </div>
     )
 

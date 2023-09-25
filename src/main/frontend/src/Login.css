@@ -1,12 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    margin: 0px;
+    padding: 0px;
+    background-color: white;
 }
 
-h1 {
-    text-align: center;
+#login-button{
+    margin: 20px;
 }
+
 
 .form-group {
     margin-bottom: 15px;

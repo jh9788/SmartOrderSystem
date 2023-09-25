@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Home from './Home';
+import Main from './Main';
 import Login from './Login';
 import Table from './Table';
 import Order from './Order';
@@ -10,11 +10,11 @@ function App(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path = "/Home" element = {<Home/>} />
-                <Route path = "/Login" element = {<Login/>} />
-                <Route path = "/Table" element = {<Table/>} />
-                <Route path = "/Order" element = {<Order/>}/>
-                <Route path = "/Join" element = {<Join/>}/>
+                <Route path = "/main" element = {<Main/>} />
+                <Route path = "/login" element = {<Login/>} />
+                <Route path = "/table" element = {<Table/>} />
+                <Route path = "/order" element = {<Order/>}/>
+                <Route path = "/join" element = {<Join/>}/>
             </Routes>
             {/*
             <div id = "mainHome">

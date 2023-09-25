@@ -8,11 +8,11 @@ function Table() {
 
     const movePage = useNavigate();
     function gohome(){
-        movePage('/Home');
+        movePage('/home');
     }
 
     function goOrder(){
-        movePage('/Order');
+        movePage('/order');
     }
     const handlePrint = () => {
         window.print();
