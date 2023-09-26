@@ -70,7 +70,7 @@ function Order() {
             <div className="wrapper">
 
                 <div className="menu-item korean">
-                    <img src="./img/곱창전골.jpg" alt="곱창전골">
+                    <img src="api/order/image?store=test&menu=곱창전골" alt="곱창전골">
                     </img>
                     <h3>곱창전골</h3>
                     <p>곱이 꽉 찬 소곱창전골입니다. </p>
@@ -79,7 +79,7 @@ function Order() {
                 </div>
 
                 <div className="menu-item side-dish">
-                    <img src="./img/후라이드치킨.jpg" alt="후라이드치킨"></img>
+                    <img src="api/order/image?store=test&menu=후라이드치킨" alt="후라이드치킨"></img>
                     <h3>후라이드치킨</h3>
                     <p>BBQ, BHC를 능가하는 바삭함</p>
                     <p>가격 : 20000원</p>
@@ -87,7 +87,7 @@ function Order() {
                 </div>
 
                 <div className="menu-item korean">
-                    <img src="./img/떡볶이.jpg" alt="떡볶이"></img>
+                    <img src="api/order/image?store=test&menu=떡볶이" alt="떡볶이"></img>
                     <h3>떡볶이</h3>
                     <p>순한맛/중간맛/매운맛/사망맛 골라주세요</p>
                     <p>가격 : 18000원</p>
@@ -95,7 +95,7 @@ function Order() {
                 </div>
 
                 <div className="menu-item korean">
-                    <img src="./img/김치찌개.jpg" alt="김치찌개"></img>
+                    <img src="api/order/image?store=test&menu=김치찌개" alt="김치찌개"></img>
                     <h3>김치찌개</h3>
                     <p>돼지고기가 들어간 김치찌개</p>
                     <p>가격 : 18000원</p>
@@ -103,14 +103,14 @@ function Order() {
                 </div>
 
                 <div className="menu-item side-dish">
-                    <img src="./img/오뎅탕.jpg" alt="오뎅탕"></img>
+                    <img src="api/order/image?store=test&menu=오뎅탕" alt="오뎅탕"></img>
                     <h3>오뎅탕</h3>
                     <p>결정장애 왔을 때 최고의 안주</p>
                     <p>가격 : 13000원</p>
                     <button onClick={()=>handleOrderClick('오뎅탕',13000)}>주문하기</button>
                 </div>
                 <div className="menu-item side-dish">
-                    <img src="./img/감자튀김.jpg" alt="감자튀김"></img>
+                    <img src="api/order/image?store=test&menu=감자튀김" alt="감자튀김"></img>
                     <h3>감자튀김</h3>
                     <p>맘스터치 감자튀김. 내가가르침</p>
                     <p>가격 : 10000원</p>
@@ -118,7 +118,7 @@ function Order() {
                 </div>
 
                 <div className="menu-item drink">
-                    <img src="./img/생맥주.jpg" alt="생맥주"></img>
+                    <img src="api/order/image?store=test&menu=생맥주" alt="생맥주"></img>
                     <h3>생맥주 500CC</h3>
                     <p>아사이 500cc 생맥주</p>
                     <p>가격 : 5000원</p>
@@ -126,7 +126,7 @@ function Order() {
                 </div>
 
                 <div className="menu-item drink">
-                    <img src="./img/진로.jpg" alt="진로소주"></img>
+                    <img src="api/order/image?store=test&menu=진로" alt="진로소주"></img>
                     <h3>소주</h3>
                     <p>진로/참이슬</p>
                     <p>가격 : 5000원</p>
@@ -135,7 +135,7 @@ function Order() {
 
 
                 <div className="menu-item drink">
-                    <img src="./img/매화수.jpg" alt="매화수"></img>
+                    <img src="/img/매화수.jpg" alt="매화수"></img>
                     <h3>매화수</h3>
                     <p>달콤한 매화수/숙취 조심</p>
                     <p>가격 : 6000원</p>

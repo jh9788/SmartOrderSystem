@@ -6,7 +6,7 @@ function LoadImageComponent() {
 
     const url = 'http://localhost:3000'
     function getImg() {
-        fetch(url + '?store=teststore&table=testtable')
+        fetch(url + '?store=teststore&menu=testmenu')
             .then(response => response.blob())
             .then(data => {
                 const reader = new FileReader();
