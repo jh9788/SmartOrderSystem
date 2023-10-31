@@ -9,6 +9,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "order_table")
 @Getter @Setter
+// 주문 테이블
 public class Order {
     @Id
     private long id;

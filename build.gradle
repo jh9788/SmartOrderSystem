@@ -20,6 +20,13 @@ dependencies {
 	implementation 'org.projectlombok:lombok'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation' // javax.validation 위해 추가
+	testImplementation 'org.springframework.security:spring-security-test'
+
+// JWT Token
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 tasks.named('test') {

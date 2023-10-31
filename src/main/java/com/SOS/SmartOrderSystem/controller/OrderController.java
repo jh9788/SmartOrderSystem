@@ -30,7 +30,7 @@ public class OrderController {
 
     @GetMapping("/order/image")
     public ResponseEntity<Resource> returnImage(@RequestParam(value = "store") String store,
-                                         @RequestParam(value = "menu") String menu)
+                                                @RequestParam(value = "menu") String menu)
     {
         String path = "src/main/frontend/public/img/" + menu + ".jpg"; //이미지가 저장된 위치
         Resource resource = new FileSystemResource(path);

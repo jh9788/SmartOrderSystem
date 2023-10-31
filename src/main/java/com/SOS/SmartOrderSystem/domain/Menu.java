@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name = "menu_table")
 @Getter @Setter
 public class Menu {
-
     @Id
     private long id;
     private String name;

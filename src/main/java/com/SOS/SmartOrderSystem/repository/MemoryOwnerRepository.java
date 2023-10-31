@@ -1,6 +1,7 @@
 package com.SOS.SmartOrderSystem.repository;
 
 import com.SOS.SmartOrderSystem.domain.Owner;
+import com.SOS.SmartOrderSystem.domain.dto.JoinRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.ResponseEntity;
@@ -12,14 +13,21 @@ public class MemoryOwnerRepository implements OwnerRepository{
 
     private static Map<String, Owner> store = new HashMap<>();
 
-
+    private final OwnerRepository ownerRepository;
     //이거 제대로 작동하는지 의심됨
     //@Autowired
     private ApplicationContext ac;
 
+    /**
+     * 회원가입 기능 1
+     * 화면에서 JoinRequest(id, password)을 입력받아 Owner 변환 후 저장
+     * loginId 중복 체크는 Controller에서 진행 => 에러 메세지 출력을 위해
+     */
+    public void join(JoinRequest joinRequest) {
+        ownerRepository.save(joinRequest.toEntity());
+    }
 
-
-    @Override
+   /* @Override
     public Owner save(Owner owner) {
 
         System.out.println("owner.getId() = " + owner.getId());
@@ -28,7 +36,7 @@ public class MemoryOwnerRepository implements OwnerRepository{
 
         return owner;
     }
-
+*/
     @Override
     public Optional<Owner> findById(String id) {
        String foundId = store.get(id).getId();
