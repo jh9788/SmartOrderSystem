@@ -7,8 +7,8 @@ import ImageComponent from "./ImageComponent";
 function Table() {
 
     const movePage = useNavigate();
-    function gohome(){
-        movePage('/home');
+    function goMain(){
+        movePage('/main');
     }
 
     function goOrder(){
@@ -20,7 +20,7 @@ function Table() {
     return(
         <div id="table">
             <div id = "gohome">
-                <button onClick={gohome}>홈으로</button>
+                <button onClick={goMain}>홈으로</button>
                 <button onClick={goOrder}>메뉴판으로</button>
             </div>
             <h1>(가게이름) QR코드 등록</h1>
