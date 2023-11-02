@@ -17,9 +17,16 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.google.zxing:core:3.5.1'
 	implementation 'com.google.zxing:javase:3.5.1'
-	implementation 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.springframework.boot:spring-boot-starter-validation' // javax.validation 위해 추가
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	// Spring Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+	// JWT Token
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 tasks.named('test') {
