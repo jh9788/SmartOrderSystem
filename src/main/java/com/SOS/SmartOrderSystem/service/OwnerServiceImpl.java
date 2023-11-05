@@ -1,12 +1,15 @@
 package com.SOS.SmartOrderSystem.service;
 
+import com.SOS.SmartOrderSystem.auth.JwtTokenProvider;
 import com.SOS.SmartOrderSystem.domain.Owner;
 import com.SOS.SmartOrderSystem.domain.dto.JoinRequest;
 import com.SOS.SmartOrderSystem.domain.dto.LoginRequest;
 import com.SOS.SmartOrderSystem.repository.OwnerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -15,38 +18,38 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OwnerServiceImpl {
 
-    private final OwnerRepository ownerRepository;
+    private OwnerRepository ownerRepository;
+    private JwtTokenProvider jwtTokenProvider;
 
     // Spring Security를 사용한 로그인 구현 시 사용
-    private final BCryptPasswordEncoder encoder;
-
+    //private final BCryptPasswordEncoder encoder;
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
     /**
      * loginId 중복 체크
      * 회원가입 기능 구현 시 사용
      * 중복되면 true return
      */
+
     public boolean checkLoginIdDuplicate(String loginId) {
         return ownerRepository.existsById(loginId);
     }
 
     /**
-     * 회원가입 기능 1
+     * 회원가입
      * 화면에서 JoinRequest(loginId, password)을 입력받아 Owner로 변환 후 저장
      * loginId 중복 체크는 Controller에서 진행 => 에러 메세지 출력을 위해
+     * 비밀 번호 암호화해서 저장
      */
-    public void join(JoinRequest joinRequest) {
-        ownerRepository.save(joinRequest.toEntity())
-    };
+    public void join(JoinRequest joinRequest)
+    {
+        Owner ownerEntity = new Owner(joinRequest);
 
-    /**
-     * 회원가입 기능 2
-     * 화면에서 JoinRequest(loginId, password)을 입력받아 Owner로 변환 후 저장
-     * 회원가입 1과는 달리 비밀번호를 암호화해서 저장
-     * loginId 중복 체크는 Controller에서 진행 => 에러 메세지 출력을 위해
-     */
-    public void join2(JoinRequest joinRequest) {
-        ownerRepository.save(joinRequest.toEntity(encoder.encode(joinRequest.getPassword())));
-    }
+        // 비밀번호 암호화 후 저장
+        String encodedPassword = passwordEncoder.encode(ownerEntity.getPassword());
+        ownerEntity.setPassword(encodedPassword);
+
+        ownerRepository.save(ownerEntity);
+    };
 
     /**
      *  로그인 기능
@@ -54,21 +57,21 @@ public class OwnerServiceImpl {
      *  loginId가 존재하지 않거나 password가 일치하지 않으면 null return
      */
     public Owner login(LoginRequest loginRequest) {
-        Optional<Owner> optionalOwner = ownerRepository.findById(loginRequest.getId());
+        Optional<Owner> optionalOwnerEntity = ownerRepository.findById(loginRequest.getId());
 
         // loginId와 일치하는 Owner가 없으면 null return
-        if(optionalOwner.isEmpty()) {
+        if(optionalOwnerEntity.isEmpty()) {
             return null;
         }
 
-        Owner Owner = optionalOwner.get();
+        Owner ownerEntity = optionalOwnerEntity.get();
 
-        // 찾아온 Owner의 password와 입력된 password가 다르면 null return
-        if(!Owner.getPassword().equals(loginRequest.getPassword())) {
+        // 찾아온 Owner의 password와 입력된 password가 다르면 null return{
+        if(!passwordEncoder.matches(loginRequest.getPassword(),ownerEntity.getPassword())){
             return null;
         }
 
-        return Owner;
+        return ownerEntity; // 로그인 성공, 객체 반환
     }
 
     /**

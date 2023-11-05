@@ -20,7 +20,6 @@ public class OrderServiceImpl implements OrderService {
     private final JpaMenuRepository menuRepository;
 
 
-
     @Override
     public void join(Order order) {
         //validateDuplicateOrder(order);
@@ -32,19 +31,19 @@ public class OrderServiceImpl implements OrderService {
     public Order findOrder(Long orderId) {
         return null;
     }
-/*
 
-    private void validateDuplicateOrder(Order order) {
-        orderRepository.findByName(order.getName()).ifPresent((m -> {
-            throw new IllegalStateException("이미 존재하는 회원입니다.");
-        }));
-    }
-*/
+    /*
+        private void validateDuplicateOrder(Order order) {
+            orderRepository.findByName(order.getName()).ifPresent((m -> {
+                throw new IllegalStateException("이미 존재하는 회원입니다.");
+            }));
+        }
+    */
     public List<Order> findMembers() {
         return orderRepository.findAll();
     }
-    
-    public Optional<Order> findOne(Long memberId){
+
+    public Optional<Order> findOne(Long memberId) {
         return orderRepository.findById(memberId);
     }
 }

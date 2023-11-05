@@ -1,9 +1,13 @@
 package com.SOS.SmartOrderSystem.controller;
 
+import com.SOS.SmartOrderSystem.auth.JwtTokenProvider;
 import com.SOS.SmartOrderSystem.domain.Menu;
 import com.SOS.SmartOrderSystem.domain.Order;
+import com.SOS.SmartOrderSystem.domain.Owner;
+import com.SOS.SmartOrderSystem.domain.dto.LoginRequest;
 import com.SOS.SmartOrderSystem.repository.MenuRepository;
 import com.SOS.SmartOrderSystem.service.OrderService;
+import com.SOS.SmartOrderSystem.service.OwnerService;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -15,24 +19,29 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.net.Authenticator;
 import java.util.HashMap;
 import java.util.Optional;
-
 
 
 @RestController
 @RequestMapping("/qr")
 public class TableRegisterController {
+    // private static final String SECRET_KEY = "my-secret-key!@";
+    // @Autowired private OwnerService ownerService;
     @GetMapping
     public ResponseEntity<byte[]> generateQRCode(@RequestParam("url") String url) throws WriterException, IOException {
+
         int width = 500;
         int height = 500;
 
-        url = "www.SmartOrderSystem.com/" + "storeName/" + url;
+
 
         System.out.println("url = " + url);
 

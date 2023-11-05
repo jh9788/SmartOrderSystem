@@ -1,3 +1,4 @@
+/*
 package com.SOS.SmartOrderSystem.domain.dto;
 
 import lombok.Getter;
@@ -16,4 +17,5 @@ public class OwnerParam {
     public OwnerParam(){
 
     }
-}
+} 안씀
+*/

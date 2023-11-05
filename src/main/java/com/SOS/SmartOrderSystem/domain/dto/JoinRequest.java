@@ -2,17 +2,17 @@ package com.SOS.SmartOrderSystem.domain.dto;
 import com.SOS.SmartOrderSystem.domain.Owner;
 import com.SOS.SmartOrderSystem.domain.entity.UserRole;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 // Owner 만
-@Getter
-@Setter
+@Data //getter, setter, constructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class JoinRequest {
     @NotBlank(message = "아이디를 입력해주세요.")
     private String id;
+    @NotBlank(message = "이름을 입력해주세요.")
+    private String name;
     @NotBlank(message = "비밀번호를 입력해주세요.")
     private String password;
     private String passwordCheck;

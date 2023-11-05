@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import './Join.css';
 import React, { useState } from 'react';
