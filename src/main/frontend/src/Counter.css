@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f1e9;
+    margin: 0;
+}
+header {
+    background-color: #23273D;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+/* <p> 태그 스타일 */
+.orders {
+    font-family: 'Helvetica', Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    padding: 10px;
+    text-align: left;
+    border-left: 4px solid #FF5733; /* 박스 색상 */
+    color: #007BFF; /* 글자색 */
+    background-color: #F0E68C; /* 박스 배경 색상 */
+}
+
+/* <p> 태그에 마우스 호버 시 스타일 변경 */
+.orders:hover {
+    color: #FFD700; /* 호버 시 글자색 변경 */
+    background-color: #3366CC; /* 호버 시 박스 배경 색상 변경 */
+    border-left-color: #FF1493;
+}

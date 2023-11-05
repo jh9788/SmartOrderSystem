@@ -27,7 +27,7 @@ function Join() {
         gender: gender
     };
     function goMain(){
-        movePage('/main');
+        movePage('/');
 
     }
 

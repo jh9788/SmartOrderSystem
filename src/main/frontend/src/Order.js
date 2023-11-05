@@ -47,9 +47,10 @@ function Order() {
 //웹소켓 disconnect-unsubscribe 부분
 // 웹소켓을 disconnect을 따로 해주지 않으면 계속 연결되어 있어서 사용하지 않을때는 꼭 연결을 끊어주어야한다.
 
-    const SendMessage = (menu, store) => {
+    const sendMessage = (menu, store) => {
         stomp.send('/app/chat', {},
             JSON.stringify({menu: menu, store: store}));
+            showAlert();
         };
 
         //예시 - 데이터 보낼때 json형식을 맞추어 보낸다.
@@ -78,35 +79,77 @@ function Order() {
 
     return (
         <div className="App">
-            <header>
-                <h1>비대면 주문 시스템</h1>
+            <header className="header">
+                <h1>Smart Order System</h1>
             </header>
 
-            <div className ="menu-types">
-                <button className ="menu-type-button active" data-menu-type="all">전체</button>
-                <button className ="menu-type-button" data-menu-type="korean">한식</button>
-                <button className ="menu-type-button" data-menu-type="side-dish">안주</button>
-                <button className ="menu-type-button" data-menu-type="drink">주류</button>
-                <button className ="menu-type-button" data-menu-type="message" onClick={() =>
-                    SendMessage('곱창전골', '역전승환이맥주')}>메시지전송</button>
-            </div>
+            <main className="main">
+                <nav className="nav">
+                    <button>전체</button>
+                    <button>한식</button>
+                    <button>안주</button>
+                    <button>주류</button>
+                </nav>
 
-            <div className="wrapper">
-
-                <div className="menu-item korean">
-                    <img src="api/order/image?store=test&menu=곱창전골" alt="곱창전골">
-                    </img>
-                    <h3>곱창전골</h3>
-                    <p>곱이 꽉 찬 소곱창전골입니다. </p>
-                    <p>가격 : 30000원</p>
-                    <button onClick={()=>handleOrderClick('곱창전골',30000)}>주문하기</button>
+                <div className="menu-container">
+                    <div className="menu-row">
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=감자튀김"/>
+                            <h2>감자튀김</h2>
+                            <p>가격: 10,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("감자튀김", "test")}>주문하기</button>
+                        </section>
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=곱창전골" />
+                            <h2>곱창전골</h2>
+                            <p>가격: 24,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("곱창전골", "test")}>주문하기</button>
+                        </section>
+                    </div>
+                    <div className="menu-row">
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=김치찌개" />
+                            <h2>김치찌개</h2>
+                            <p>가격: 15,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("김치찌개", "test")}>주문하기</button>
+                        </section>
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=떡볶이"/>
+                            <h2>떡볶이</h2>
+                            <p>가격: 18,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("떡볶이", "test")}>주문하기</button>
+                        </section>
+                    </div>
+                    <div className="menu-row">
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=오뎅탕" />
+                            <h2>오뎅탕</h2>
+                            <p>가격: 14,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("오뎅탕", "test")}>주문하기</button>
+                        </section>
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=후라이드치킨"/>
+                            <h2>후라이드치킨</h2>
+                            <p>가격: 20,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("후라이드치킨", "test")}>주문하기</button>
+                        </section>
+                    </div>
+                    <div className="menu-row">
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=생맥주"/>
+                            <h2>맥주</h2>
+                            <p>가격: 5,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("생맥주", "test")}>주문하기</button>
+                        </section>
+                        <section className="menu">
+                            <img src="api/order/image?store=test&menu=진로" />
+                            <h2>소주</h2>
+                            <p>가격: 5,000</p>
+                            <button className="order-button" onClick={()=>sendMessage("진로", "test")}>주문하기</button>
+                        </section>
+                    </div>
                 </div>
-                <div className="chat-messages" >
-                    <p id="response"></p>
-                </div>
-            </div>
-
-
+            </main>
 
             <footer>
                 <p>주소 : 서울특별시 마포구 와우산로 94 홍익대학교 | 전화번호 : 010-2803-1960 | 대표 : 이재진</p>
