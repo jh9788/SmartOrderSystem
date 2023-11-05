@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)// 현재는 세션 기반 인증 사용 x -> 비활성화
                 .and()
                 .authorizeRequests()
-                .requestMatchers("/api/**").permitAll() // 모두 허용(인증 하지 않고 사용 가능) 흠..
+                .requestMatchers("**").permitAll() // 모두 허용(인증 하지 않고 사용 가능) 흠..
                 .anyRequest().authenticated(); // 나머지 Request 에 대해서는 인증된 사용자만 사용 가능
 
         httpSecurity.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);

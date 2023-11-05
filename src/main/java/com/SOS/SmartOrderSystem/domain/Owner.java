@@ -18,7 +18,7 @@ public class Owner {
     @Id //기본키를 의미. 반드시 기본키를 가져야함.
     //@GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동 생성 -> identity: mysql 에서 auto_increment 실행
     private String id;
-    @Column(length = 15, nullable = false)
+    //@Column(length = 15, nullable = false)
     private String password;
     private String name;
     private String gender;

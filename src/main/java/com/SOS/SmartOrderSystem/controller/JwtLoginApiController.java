@@ -7,6 +7,7 @@ import com.SOS.SmartOrderSystem.domain.dto.JoinRequest;
 import com.SOS.SmartOrderSystem.domain.dto.LoginRequest;
 import com.SOS.SmartOrderSystem.service.OwnerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -15,19 +16,22 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class JwtLoginApiController {
-    private OwnerService ownerService;
+    private final OwnerService ownerService;
     @PostMapping("/join")
     public String join(@RequestBody JoinRequest joinRequest){
+
         // loginId 중복 체크
         if(ownerService.checkLoginIdDuplicate(joinRequest.getId())) {
             return "로그인 아이디가 중복됩니다.";
         }
         // password 와 passwordCheck 가 같은지 체크
-        if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
+/*        if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
             return "바밀번호가 일치하지 않습니다.";
-        }
+        }*/
 
+        System.out.println("JwtLoginApiController.join");
         ownerService.join(joinRequest);
+        System.out.println("JwtLoginApiController.join");
         return "회원가입 성공";
     }
 

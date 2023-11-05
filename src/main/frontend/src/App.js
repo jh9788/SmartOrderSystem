@@ -5,12 +5,13 @@ import Table from './Table';
 import Order from './Order';
 import Join from './Join';
 import React from "react";
+
 function App(){
 
     return(
         <BrowserRouter>
             <Routes>
-                <Route path = "/main" element = {<Main/>} />
+                <Route path = "/" element = {<Main/>} />
                 <Route path = "/login" element = {<Login/>} />
                 <Route path = "/table" element = {<Table/>} />
                 <Route path = "/order" element = {<Order/>}/>
@@ -39,5 +40,8 @@ function App(){
         </BrowserRouter>
 
     )
+
+
 }
+
 export default App

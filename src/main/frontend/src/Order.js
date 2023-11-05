@@ -1,6 +1,9 @@
 import './Order.css';
 import React from 'react';
 import axios from 'axios';
+import { useEffect, useState } from "react";
+import SockJs from "sockjs-client";
+import StompJs from "stompjs";
 
 function Order() {
 
@@ -8,39 +11,59 @@ function Order() {
     const menuTypeButtons = document.querySelectorAll(".menu-type-button");
 
 
+    //const sock = new SockJs("http://localhost:8080/chat");
+    const sock = new SockJs("/chat");
+//client 객체 생성 및 서버주소 입력
+
+    const stomp = StompJs.over(sock);
+//stomp로 감싸기
+
+    const stompConnect = (() => {
+
+            stomp.connect({}, () => {
+                stomp.subscribe(
+                    `/topic/messages`,
+                    (data) => {
+                        const newMessage = JSON.parse(data.body);
+                        //데이터 파싱
+                        //todo setMessage 함수 넣기
+                    }
+                );
+            });
+    });
+
+//웹소켓 connect-subscribe 부분
+
+    // const stompDisConnect = () => {
+    //     try {
+    //         stomp.debug = null;
+    //         stomp.disconnect(() => {
+    //             stomp.unsubscribe("sub-0");
+    //         });
+    //     } catch (err) {
+    //
+    //     }
+    // };
+//웹소켓 disconnect-unsubscribe 부분
+// 웹소켓을 disconnect을 따로 해주지 않으면 계속 연결되어 있어서 사용하지 않을때는 꼭 연결을 끊어주어야한다.
+
+    const SendMessage = (menu, store) => {
+        stomp.send('/app/chat', {},
+            JSON.stringify({menu: menu, store: store}));
+        };
+
+        //예시 - 데이터 보낼때 json형식을 맞추어 보낸다.
+
+
+    useEffect(() => {
+        stompConnect();
+    }, []);
+
     function showAlert() {
         alert("주문이 완료되었습니다!");
     }
 
-    items.forEach(item => {
-        const button = item.querySelector("button");
-        button.onclick = showAlert;
-    });
 
-    menuTypeButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            // 현재 클릭된 버튼에 active 클래스 추가
-            button.classList.add("active");
-
-            // 다른 버튼에서 active 클래스 제거
-            menuTypeButtons.forEach(otherButton => {
-                if (otherButton !== button) {
-                    otherButton.classList.remove("active");
-                }
-            });
-
-            //해당 메뉴 종류에 해당하는 메뉴만 보여주도록 변경
-            const menuType = button.dataset.menuType;
-
-            items.forEach(item => {
-                if (menuType === "all" || item.classList.contains(menuType)) {
-                    item.style.display = "block";
-                } else {
-                    item.style.display = "none";
-                }
-            });
-        });
-    });
     /*구분-------------------------------------------*/
     function handleOrderClick(menuName, menuPrice){
         axios.post('/api/order', {name: menuName, price: menuPrice})
@@ -59,12 +82,13 @@ function Order() {
                 <h1>비대면 주문 시스템</h1>
             </header>
 
-
             <div className ="menu-types">
                 <button className ="menu-type-button active" data-menu-type="all">전체</button>
                 <button className ="menu-type-button" data-menu-type="korean">한식</button>
                 <button className ="menu-type-button" data-menu-type="side-dish">안주</button>
                 <button className ="menu-type-button" data-menu-type="drink">주류</button>
+                <button className ="menu-type-button" data-menu-type="message" onClick={() =>
+                    SendMessage('곱창전골', '역전승환이맥주')}>메시지전송</button>
             </div>
 
             <div className="wrapper">
@@ -77,71 +101,13 @@ function Order() {
                     <p>가격 : 30000원</p>
                     <button onClick={()=>handleOrderClick('곱창전골',30000)}>주문하기</button>
                 </div>
-
-                <div className="menu-item side-dish">
-                    <img src="api/order/image?store=test&menu=후라이드치킨" alt="후라이드치킨"></img>
-                    <h3>후라이드치킨</h3>
-                    <p>BBQ, BHC를 능가하는 바삭함</p>
-                    <p>가격 : 20000원</p>
-                    <button onClick={()=>handleOrderClick('후라이드치킨',20000)}>주문하기</button>
-                </div>
-
-                <div className="menu-item korean">
-                    <img src="api/order/image?store=test&menu=떡볶이" alt="떡볶이"></img>
-                    <h3>떡볶이</h3>
-                    <p>순한맛/중간맛/매운맛/사망맛 골라주세요</p>
-                    <p>가격 : 18000원</p>
-                    <button onClick={()=>handleOrderClick('떡볶이',18000)}>주문하기</button>
-                </div>
-
-                <div className="menu-item korean">
-                    <img src="api/order/image?store=test&menu=김치찌개" alt="김치찌개"></img>
-                    <h3>김치찌개</h3>
-                    <p>돼지고기가 들어간 김치찌개</p>
-                    <p>가격 : 18000원</p>
-                    <button onClick={()=>handleOrderClick('김치찌개',18000)}>주문하기</button>
-                </div>
-
-                <div className="menu-item side-dish">
-                    <img src="api/order/image?store=test&menu=오뎅탕" alt="오뎅탕"></img>
-                    <h3>오뎅탕</h3>
-                    <p>결정장애 왔을 때 최고의 안주</p>
-                    <p>가격 : 13000원</p>
-                    <button onClick={()=>handleOrderClick('오뎅탕',13000)}>주문하기</button>
-                </div>
-                <div className="menu-item side-dish">
-                    <img src="api/order/image?store=test&menu=감자튀김" alt="감자튀김"></img>
-                    <h3>감자튀김</h3>
-                    <p>맘스터치 감자튀김. 내가가르침</p>
-                    <p>가격 : 10000원</p>
-                    <button onClick={()=>handleOrderClick('감자튀김',10000)}>주문하기</button>
-                </div>
-
-                <div className="menu-item drink">
-                    <img src="api/order/image?store=test&menu=생맥주" alt="생맥주"></img>
-                    <h3>생맥주 500CC</h3>
-                    <p>아사이 500cc 생맥주</p>
-                    <p>가격 : 5000원</p>
-                    <button onClick={()=>handleOrderClick('생맥주',5000)}>주문하기</button>
-                </div>
-
-                <div className="menu-item drink">
-                    <img src="api/order/image?store=test&menu=진로" alt="진로소주"></img>
-                    <h3>소주</h3>
-                    <p>진로/참이슬</p>
-                    <p>가격 : 5000원</p>
-                    <button onClick={()=>handleOrderClick('소주',5000)}>주문하기</button>
-                </div>
-
-
-                <div className="menu-item drink">
-                    <img src="/img/매화수.jpg" alt="매화수"></img>
-                    <h3>매화수</h3>
-                    <p>달콤한 매화수/숙취 조심</p>
-                    <p>가격 : 6000원</p>
-                    <button onClick={()=>handleOrderClick('매화수',6000)}>주문하기</button>
+                <div className="chat-messages" >
+                    <p id="response"></p>
                 </div>
             </div>
+
+
+
             <footer>
                 <p>주소 : 서울특별시 마포구 와우산로 94 홍익대학교 | 전화번호 : 010-2803-1960 | 대표 : 이재진</p>
             </footer>

@@ -5,6 +5,7 @@ import com.SOS.SmartOrderSystem.domain.Owner;
 import com.SOS.SmartOrderSystem.domain.dto.JoinRequest;
 import com.SOS.SmartOrderSystem.domain.dto.LoginRequest;
 import com.SOS.SmartOrderSystem.repository.OwnerRepository;
+import com.SOS.SmartOrderSystem.repository.jpa.JpaOwnerRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OwnerServiceImpl {
+public class OwnerServiceImpl implements OwnerService {
 
-    private OwnerRepository ownerRepository;
+    private final JpaOwnerRepository ownerRepository;
     private JwtTokenProvider jwtTokenProvider;
 
     // Spring Security를 사용한 로그인 구현 시 사용
@@ -31,7 +32,12 @@ public class OwnerServiceImpl {
      */
 
     public boolean checkLoginIdDuplicate(String loginId) {
-        return ownerRepository.existsById(loginId);
+        if(ownerRepository.findById(loginId).isEmpty()){
+            return false;
+        }
+        else
+            return true;
+        //return ownerRepository.existsById(loginId);
     }
 
     /**

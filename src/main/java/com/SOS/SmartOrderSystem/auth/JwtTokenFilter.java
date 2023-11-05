@@ -64,7 +64,7 @@ public class JwtTokenFilter extends OncePerRequestFilter { //OncePerRequestFilte
             String ownerId = JwtTokenProvider.getValidatedId(token, secretKey);
 
             // 추출한 loginId로 User 찾아오기
-            Owner loginedOwner = ownerService.findOwnerID(ownerId);
+            Owner loginedOwner = ownerService.getLoginOwnerById(ownerId);
 
             // loginUser 정보로 UsernamePasswordAuthenticationToken 발급 (SecurityContext 에 추가할 객체)
          UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
