@@ -56,7 +56,7 @@ function Main() {
                 </ul>
             </nav>
             <section id="main" className="main">
-                <img src="" alt="QR Code" className="main-image"/>
+                <img src="/img/main.png" alt="QR Code" className="main-image"/>
                 <p className="main-text">QR코드로<br/>주문을<br/>간편하게</p>
             </section>
             <footer>

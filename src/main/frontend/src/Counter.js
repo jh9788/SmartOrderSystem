@@ -17,7 +17,7 @@ function Counter(){
 //stomp로 감싸기
 
     const stompConnect = (() => {
-
+        //stomp.debug = null;
         stomp.connect({}, () => {
             stomp.subscribe(
                 `/topic/messages`,
@@ -73,7 +73,7 @@ function Counter(){
     return (
         <div className="App">
             <header>
-                <h1>비대면 주문 시스템</h1>
+                <h1>역전승환이맥주</h1>
             </header>
 
             <div className="wrapper">
