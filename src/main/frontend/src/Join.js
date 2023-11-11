@@ -36,7 +36,7 @@ function Join() {
             .then(function (response) {
                 console.log(response.data);
                 alert("회원가입이 완료되었습니다!");
-                movePage('/main');
+                movePage('/');
             })
             .catch(function (error) {
                 console.log(error);

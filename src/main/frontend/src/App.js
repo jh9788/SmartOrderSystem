@@ -9,17 +9,17 @@ import React from "react";
 
 function App(){
 
-    return(
-        <BrowserRouter>
-            <Routes>
-                <Route path = "/" element = {<Main/>} />
-                <Route path = "/login" element = {<Login/>} />
-                <Route path = "/table" element = {<Table/>} />
-                <Route path = "/order" element = {<Order/>}/>
-                <Route path = "/join" element = {<Join/>}/>
-                <Route path = "/counter" element = {<Counter/>}/>
-            </Routes>
-            {/*
+        return (
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/table" element={<Table/>}/>
+                    <Route path="/order" element={<Order/>}/>
+                    <Route path="/join" element={<Join/>}/>
+                    <Route path="/counter" element={<Counter/>}/>
+                </Routes>
+                {/*
             <div id = "mainHome">
                 <Link to="/Home">home 컴포넌트 띄우기</Link>
             </div>
@@ -39,9 +39,9 @@ function App(){
             </div>
             */}
 
-        </BrowserRouter>
+            </BrowserRouter>
 
-    )
+        )
 
 
 }

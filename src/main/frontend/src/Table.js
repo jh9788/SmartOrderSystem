@@ -8,11 +8,14 @@ function Table() {
 
     const movePage = useNavigate();
     function gohome(){
-        movePage('/home');
+        movePage('/');
     }
 
     function goOrder(){
         movePage('/order');
+    }
+    function goCounter(){
+        movePage('/counter');
     }
     const handlePrint = () => {
         window.print();
@@ -21,7 +24,7 @@ function Table() {
         <div id="table">
             <div id = "gohome">
                 <button onClick={gohome}>홈으로</button>
-                <button onClick={goOrder}>메뉴판으로</button>
+                <button onClick={goCounter}>카운터로</button>
             </div>
             <h1>(가게이름) QR코드 등록</h1>
             <h2>테이블 이름 입력</h2>

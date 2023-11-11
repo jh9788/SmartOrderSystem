@@ -28,7 +28,7 @@ function Login() {
         axios
             .post('/api/login', data)
             .then(function (response) {
-                const responseData = response.data;
+                /*const responseData = response.data;
                 if(response.status === 200)
                 {
                     const[jwtToken, expireTimeMs, Owner] =responseData.data;
@@ -43,7 +43,9 @@ function Login() {
                 else if(response.status === HttpStatusCode.Unauthorized  && response.status === HttpStatusCode.InternalServerError) {
                     console.log("아이디나 비밀번호를 확인하세요");
                     alert("아이디나 비밀번호를 확인하세요");
-                }
+                }*/
+                alert("로그인 성공");
+                goTable();
             })
             .catch(function (error) {
                 console.error(error);
