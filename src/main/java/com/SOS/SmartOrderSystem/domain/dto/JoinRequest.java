@@ -1,6 +1,9 @@
 package com.SOS.SmartOrderSystem.domain.dto;
 import com.SOS.SmartOrderSystem.domain.Owner;
+// import com.SOS.SmartOrderSystem.domain.entity.UserRole;
 import com.SOS.SmartOrderSystem.domain.entity.UserRole;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -22,6 +25,9 @@ public class JoinRequest {
     private String gender;
     @NotBlank(message = "전화번호를 입력해주세요.")
     private String phoneNumber;
+   /* @Enumerated(EnumType.STRING)
+    private UserRole userRole;
+*/
 
     // 비밀번호 암호화 X
     public Owner toEntity() {
@@ -31,7 +37,7 @@ public class JoinRequest {
                 .email(this.email)
                 .gender(this.gender)
                 .phoneNumber(this.phoneNumber)
-                .role(UserRole.Owner)
+                .role(UserRole.USER)
                 .build();
     }
 
@@ -43,7 +49,7 @@ public class JoinRequest {
                 .email(this.email)
                 .gender(this.gender)
                 .phoneNumber(this.phoneNumber)
-                .role(UserRole.Owner)
+                .role(UserRole.USER)
                 .build();
     }
 }

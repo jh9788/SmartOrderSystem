@@ -23,7 +23,7 @@ function Join() {
         id: id,
         password: password,
         email: email,
-        phone: phoneNumber,
+        phoneNumber: phoneNumber,
         gender: gender
     };
     function goMain(){
@@ -116,7 +116,7 @@ function Join() {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
-                        placeholder="Phone"
+                        placeholder="phone"
                     />
                 </div>
                 <div className="form-group">

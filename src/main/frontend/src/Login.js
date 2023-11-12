@@ -15,10 +15,10 @@ function Login() {
     };
 
     function goMain(){
-        movePage('/main');
+        movePage('/');
     }
     function goTable(){
-        movePage('/table');
+        movePage('/order');
     }
 
     const handleSubmit = (event) => {

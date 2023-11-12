@@ -19,8 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class OwnerServiceImpl implements OwnerService {
 
-    private final JpaOwnerRepository ownerRepository;
-    private JwtTokenProvider jwtTokenProvider;
+    private final JpaOwnerRepository ownerRepository; // final 필수
+    private final JwtTokenProvider jwtTokenProvider;
 
     // Spring Security를 사용한 로그인 구현 시 사용
     //private final BCryptPasswordEncoder encoder;
@@ -54,7 +54,7 @@ public class OwnerServiceImpl implements OwnerService {
         String encodedPassword = passwordEncoder.encode(ownerEntity.getPassword());
         ownerEntity.setPassword(encodedPassword);
 
-        ownerRepository.save(ownerEntity);
+        ownerRepository.save(ownerEntity); // db에 저장
     };
 
     /**
@@ -63,17 +63,19 @@ public class OwnerServiceImpl implements OwnerService {
      *  loginId가 존재하지 않거나 password가 일치하지 않으면 null return
      */
     public Owner login(LoginRequest loginRequest) {
-        Optional<Owner> optionalOwnerEntity = ownerRepository.findById(loginRequest.getId());
+        Optional<Owner> optionalOwnerEntity = ownerRepository.findById(loginRequest.getId()); // db에서 회원가입된 id를 찾음
 
         // loginId와 일치하는 Owner가 없으면 null return
         if(optionalOwnerEntity.isEmpty()) {
+            System.out.println("loginId와 일치하는 Owner가 없으면 null return");
             return null;
         }
 
         Owner ownerEntity = optionalOwnerEntity.get();
 
-        // 찾아온 Owner의 password와 입력된 password가 다르면 null return{
+        // 찾아온 Owner의 password와 입력된 password가 다르면 null return
         if(!passwordEncoder.matches(loginRequest.getPassword(),ownerEntity.getPassword())){
+            System.out.println("찾아온 Owner의 password와 입력된 password가 다르면 null return");
             return null;
         }
 
