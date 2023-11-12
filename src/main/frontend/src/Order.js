@@ -94,13 +94,13 @@ function Order() {
                 <div className="menu-container">
                     <div className="menu-row">
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=감자튀김"/>
+                            <img src="/api/order/image?store=test&menu=감자튀김"/>
                             <h2>감자튀김</h2>
                             <p>가격: 10,000</p>
                             <button className="order-button" onClick={()=>sendMessage("감자튀김", "test")}>주문하기</button>
                         </section>
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=곱창전골" />
+                            <img src="/api/order/image?store=test&menu=곱창전골" />
                             <h2>곱창전골</h2>
                             <p>가격: 24,000</p>
                             <button className="order-button" onClick={()=>sendMessage("곱창전골", "test")}>주문하기</button>
@@ -108,13 +108,13 @@ function Order() {
                     </div>
                     <div className="menu-row">
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=김치찌개" />
+                            <img src="/api/order/image?store=test&menu=김치찌개" />
                             <h2>김치찌개</h2>
                             <p>가격: 15,000</p>
                             <button className="order-button" onClick={()=>sendMessage("김치찌개", "test")}>주문하기</button>
                         </section>
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=떡볶이"/>
+                            <img src="/api/order/image?store=test&menu=떡볶이"/>
                             <h2>떡볶이</h2>
                             <p>가격: 18,000</p>
                             <button className="order-button" onClick={()=>sendMessage("떡볶이", "test")}>주문하기</button>
@@ -122,13 +122,13 @@ function Order() {
                     </div>
                     <div className="menu-row">
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=오뎅탕" />
+                            <img src="/api/order/image?store=test&menu=오뎅탕" />
                             <h2>오뎅탕</h2>
                             <p>가격: 14,000</p>
                             <button className="order-button" onClick={()=>sendMessage("오뎅탕", "test")}>주문하기</button>
                         </section>
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=후라이드치킨"/>
+                            <img src="/api/order/image?store=test&menu=후라이드치킨"/>
                             <h2>후라이드치킨</h2>
                             <p>가격: 20,000</p>
                             <button className="order-button" onClick={()=>sendMessage("후라이드치킨", "test")}>주문하기</button>
@@ -136,13 +136,13 @@ function Order() {
                     </div>
                     <div className="menu-row">
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=생맥주"/>
+                            <img src="/api/order/image?store=test&menu=생맥주"/>
                             <h2>맥주</h2>
                             <p>가격: 5,000</p>
                             <button className="order-button" onClick={()=>sendMessage("생맥주", "test")}>주문하기</button>
                         </section>
                         <section className="menu">
-                            <img src="api/order/image?store=test&menu=진로" />
+                            <img src="/api/order/image?store=test&menu=진로" />
                             <h2>소주</h2>
                             <p>가격: 5,000</p>
                             <button className="order-button" onClick={()=>sendMessage("진로", "test")}>주문하기</button>

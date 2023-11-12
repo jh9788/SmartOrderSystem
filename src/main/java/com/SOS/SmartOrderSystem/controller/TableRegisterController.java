@@ -44,8 +44,8 @@ public class TableRegisterController {
 
 
         System.out.println("url = " + url);
-
-        BitMatrix matrix = new MultiFormatWriter().encode(url, BarcodeFormat.QR_CODE, width, height);
+        String amazonUrl = "ec2-43-202-122-115.ap-northeast-2.compute.amazonaws.com/order";
+        BitMatrix matrix = new MultiFormatWriter().encode(amazonUrl, BarcodeFormat.QR_CODE, width, height);
 
         MatrixToImageConfig config = new MatrixToImageConfig(MatrixToImageConfig.BLACK, -1);
 
