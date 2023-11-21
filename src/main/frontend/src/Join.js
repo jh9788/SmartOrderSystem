@@ -9,6 +9,7 @@ function Join() {
     const [name, setName] = useState('');
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
@@ -31,7 +32,7 @@ function Join() {
 
     }
 
-    function handleOrderClick(name, id, password, email, phoneNumber, gender) {
+    function handleOrderClick(name, id, password, passwordCheck, email, phoneNumber, gender) {
         axios.post('/api/join', formData)
             .then(function (response) {
                 console.log(response.data);
@@ -93,6 +94,18 @@ function Join() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                         placeholder="Password"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="passwordCheck">비밀번호 확인:</label>
+                    <input
+                        type="passwordCheck"
+                        id="passwordCheck"
+                        name="passwordCheck"
+                        value={passwordCheck}
+                        onChange={(e) => setPasswordCheck(e.target.value)}
+                        required
+                        placeholder="PasswordCheck"
                     />
                 </div>
                 <div className="form-group">
