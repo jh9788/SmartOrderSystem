@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import './Main.css';
-
+/*
 function Main() {
     const movePage = useNavigate();
     function goLogin(){
@@ -37,5 +37,32 @@ function Main() {
     );
 
 }
+*/
 
+function Main() {
+    return (
+        <div className="App">
+            <header>
+                <h1>
+                    <Link to="/">Smart Order System</Link>
+                </h1>
+            </header>
+            <nav>
+                <ul>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/join">Signup</Link></li>
+                    <li><Link to="/menu">Menu</Link></li>
+                    <li><Link to="/contacts">Contacts</Link></li>
+                </ul>
+            </nav>
+            <section id="main" className="main">
+                <img src="/img/main.png" alt="QR Code" className="main-image"/>
+                <p className="main-text">QR코드로<br/>주문을<br/>간편하게</p>
+            </section>
+            <footer>
+                대표 : 하종훈 | 주소 : 서울특별시 마포구 와우산로 94
+            </footer>
+        </div>
+    );
+}
 export default Main;

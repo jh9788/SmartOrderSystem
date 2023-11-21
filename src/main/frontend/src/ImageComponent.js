@@ -5,7 +5,8 @@ function ImageComponent() {
     const [inputUrl, setInputUrl] = useState('');
 
     function getQR() {
-        fetch(`http://localhost:3000/qr?url=${encodeURIComponent(inputUrl)}`)
+        //fetch(`http://localhost:3000/qr?url=${encodeURIComponent(inputUrl)}`)
+        fetch(`/qr?url=${encodeURIComponent(inputUrl)}`)
             .then(response => response.blob())
             .then(data => {
                 const reader = new FileReader();

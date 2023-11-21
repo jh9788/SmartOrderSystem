@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 import './Join.css';
 import React, { useState } from 'react';
@@ -24,11 +23,11 @@ function Join() {
         id: id,
         password: password,
         email: email,
-        phone: phoneNumber,
+        phoneNumber: phoneNumber,
         gender: gender
     };
     function goMain(){
-        movePage('/main');
+        movePage('/');
 
     }
 
@@ -37,7 +36,7 @@ function Join() {
             .then(function (response) {
                 console.log(response.data);
                 alert("회원가입이 완료되었습니다!");
-                movePage('/main');
+                movePage('/');
             })
             .catch(function (error) {
                 console.log(error);
@@ -117,7 +116,7 @@ function Join() {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
-                        placeholder="Phone"
+                        placeholder="phone"
                     />
                 </div>
                 <div className="form-group">
