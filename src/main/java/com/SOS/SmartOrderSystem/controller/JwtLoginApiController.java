@@ -53,7 +53,7 @@ public class JwtLoginApiController {
 
     @GetMapping("/info")
     public String info(@AuthenticationPrincipal String id) {
-        return "로그인된 사용자는" + id + "입니다.";
+        return "로그인된 사용자는 " + id + " 입니다.";
     }
 
     @GetMapping("/owner")

@@ -3,7 +3,6 @@ package com.SOS.SmartOrderSystem.domain;
 import com.SOS.SmartOrderSystem.domain.dto.JoinRequest;
 import com.SOS.SmartOrderSystem.domain.dto.LoginRequest;
 // import com.SOS.SmartOrderSystem.domain.entity.UserRole;
-import com.SOS.SmartOrderSystem.domain.entity.UserRole;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.*;
@@ -26,7 +25,6 @@ public class Owner {
     private String gender;
     private String email;
     private String phoneNumber;
-    private UserRole role;
     //private UserRole role;
     //@AllArgsConstructor 가 자동생성
     /*  public Owner(String id, String password, String name, String sex, String email, String phoneNumber) {

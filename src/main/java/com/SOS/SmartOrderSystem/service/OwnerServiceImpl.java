@@ -75,10 +75,10 @@ public class OwnerServiceImpl implements OwnerService {
 
         // 찾아온 Owner의 password와 입력된 password가 다르면 null return
         if(!passwordEncoder.matches(loginRequest.getPassword(),ownerEntity.getPassword())){
-            System.out.println("찾아온 Owner의 password와 입력된 password가 다르면 null return");
+            System.out.println("로그인 실패");
             return null;
         }
-
+        System.out.println("로그인 성공");
         return ownerEntity; // 로그인 성공, 객체 반환
     }
 

@@ -1,8 +1,10 @@
+/*
 package com.SOS.SmartOrderSystem.domain.entity;
 
 public enum UserRole {
-    USER, ADMIN
-   /* ROLE_USER("USER"),
+    ROLE_USER, ROLE_ADMIN
+   */
+/* ROLE_USER("USER"),
     ROLE_OWNER("OWNER");
 
     // "USER", "OWNER"
@@ -16,6 +18,8 @@ public enum UserRole {
     // GetValue
     public String getValue() {
         return this.value;
-    }*/
+    }*//*
+
 }
 
+*/
