@@ -5,6 +5,7 @@ import Table from './Table';
 import Order from './Order';
 import Join from './Join';
 import Counter from './Counter'
+import Menu from './Menu'
 import React from "react";
 
 function App(){
@@ -18,6 +19,7 @@ function App(){
                     <Route path="/order" element={<Order/>}/>
                     <Route path="/join" element={<Join/>}/>
                     <Route path="/counter" element={<Counter/>}/>
+                    <Route path="/menu" element={<Menu/>}/>
                 </Routes>
                 {/*
             <div id = "mainHome">

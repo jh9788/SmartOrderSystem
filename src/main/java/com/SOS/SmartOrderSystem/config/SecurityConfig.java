@@ -29,7 +29,7 @@ public class SecurityConfig {
                      // 현재는 세션 기반 인증 사용 x -> 비활성화
                      .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
-                     .requestMatchers("/api/login").permitAll() // 로그인 허용(인증 하지 않고 사용 가능)
+                     .requestMatchers("/**").permitAll() // 로그인 허용(인증 하지 않고 사용 가능)
                      .requestMatchers("/api/join").permitAll() // 로그인 허용(인증 하지 않고 사용 가능)
                 .anyRequest().authenticated(); // 나머지 Request 에 대해서는 인증된 사용자만 사용 가능
 

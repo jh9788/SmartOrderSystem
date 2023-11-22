@@ -15,11 +15,15 @@ public class Menu {
     private long id;
     private String name;
     private long price;
+    private long storeId;
+    private String imagePath;
 
-    public Menu(long id, String name, long price) {
+    public Menu(long id, String name, long price, long storeId, String imagePath) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.storeId = storeId;
+        this.imagePath = imagePath;
     }
 
     public Menu(){};

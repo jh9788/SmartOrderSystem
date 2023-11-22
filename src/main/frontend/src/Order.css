@@ -24,6 +24,20 @@ body {
   margin: 10px 0;
 }
 
+.tab{
+  text-align: center;
+  margin: 10px 0;
+}
+.tab button{
+  background-color: #23273D;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+
+}
+
 .nav button {
   background-color: #23273D;
   color: #fff;
@@ -42,11 +56,13 @@ body {
 .menu-row {
   display: flex;
   justify-content: center;
+
 }
 
 .menu {
+  display: inline-block;
   width: 90%;
-  max-width: 400px;
+  max-width: 200px;
   border: 1px solid #ccc;
   padding: 20px;
   margin: 10px;

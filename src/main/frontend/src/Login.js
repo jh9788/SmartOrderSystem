@@ -18,7 +18,7 @@ function Login() {
         movePage('/');
     }
     function goTable(){
-        movePage('/order');
+        movePage('/table');
     }
 
     const handleSubmit = (event) => {
