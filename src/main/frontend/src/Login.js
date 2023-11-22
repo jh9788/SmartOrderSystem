@@ -32,13 +32,13 @@ function Login() {
                 const responseData = response.data;
                 if(response.status === 200)
                 {
-                    const[jwtToken, expireTimeMs, Owner] =responseData.data;
+                   /* const[jwtToken, expireTimeMs, Owner] =responseData.data;
                     const expires = new Date();
                     expires.setMilliseconds(expires.getMilliseconds + expireTimeMs);
                     setCookies('jwtToken', jwtToken, { expires });
                     alert(cookies.jwtToken); // null 아니면 로그인 되어있는 상태
                     console.log("로그인 성공");
-                    alert("로그인 성공");
+                    alert("로그인 성공");*/
                     goTable();
                 }
                 else if(response.status === HttpStatusCode.Unauthorized  && response.status === HttpStatusCode.InternalServerError) {
