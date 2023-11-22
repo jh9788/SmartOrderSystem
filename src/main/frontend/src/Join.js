@@ -23,6 +23,7 @@ function Join() {
         name: name,
         id: id,
         password: password,
+        passwordCheck: passwordCheck,
         email: email,
         phoneNumber: phoneNumber,
         gender: gender
@@ -33,12 +34,22 @@ function Join() {
     }
 
     function handleOrderClick(name, id, password, passwordCheck, email, phoneNumber, gender) {
-        axios.post('/api/join', formData)
-            .then(function (response) {
-                console.log(response.data);
-                alert("회원가입이 완료되었습니다!");
-                movePage('/');
-            })
+      axios
+                .post('/api/join', formData)
+                .then(function (response) {
+                    console.log(response.data);
+                    if (response.data === '로그인 아이디가 중복됩니다.') {
+                        alert('이미 사용중인 아이디입니다.');
+                    } else if (response.data === '바밀번호가 일치하지 않습니다.') {
+                        alert('비밀번호가 일치하지 않습니다.');
+                    } else if (response.data === '회원가입 성공') {
+                        alert('회원가입이 완료되었습니다!');
+                        movePage('/');
+                    } else {
+                        // 처리되지 않은 다른 응답
+                        console.log('다른 응답: ', response.data);
+                    }
+                })
             .catch(function (error) {
                 console.log(error);
             });
@@ -99,7 +110,7 @@ function Join() {
                 <div className="form-group">
                     <label htmlFor="passwordCheck">비밀번호 확인:</label>
                     <input
-                        type="passwordCheck"
+                        type="password"
                         id="passwordCheck"
                         name="passwordCheck"
                         value={passwordCheck}
@@ -129,7 +140,7 @@ function Join() {
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                         required
-                        placeholder="phone"
+                        placeholder="phoneNumber"
                     />
                 </div>
                 <div className="form-group">

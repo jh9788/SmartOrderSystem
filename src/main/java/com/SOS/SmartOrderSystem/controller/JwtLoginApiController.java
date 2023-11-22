@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -29,7 +30,6 @@ public class JwtLoginApiController {
             return "바밀번호가 일치하지 않습니다.";
         }
 
-        System.out.println("JwtLoginApiController.join");
         ownerService.join(joinRequest);
         return "회원가입 성공";
     }

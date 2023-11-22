@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {useCookies} from "react-cookie";
 import './Login.css';
+
 function Login() {
 
     const movePage = useNavigate();
@@ -28,7 +29,7 @@ function Login() {
         axios
             .post('/api/login', data)
             .then(function (response) {
-                /*const responseData = response.data;
+                const responseData = response.data;
                 if(response.status === 200)
                 {
                     const[jwtToken, expireTimeMs, Owner] =responseData.data;
@@ -43,7 +44,7 @@ function Login() {
                 else if(response.status === HttpStatusCode.Unauthorized  && response.status === HttpStatusCode.InternalServerError) {
                     console.log("아이디나 비밀번호를 확인하세요");
                     alert("아이디나 비밀번호를 확인하세요");
-                }*/
+                }
                 alert("로그인 성공");
                 goTable();
             })
@@ -70,6 +71,7 @@ function Login() {
                         value={id}
                         onChange={(e) => setId(e.target.value)}
                         required
+                        placeholder="ID"
                     />
                 </div>
                 <div className="form-group">
@@ -81,6 +83,7 @@ function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        placeholder="password"
                     />
                 </div>
                 <div id={"login-button"}>
