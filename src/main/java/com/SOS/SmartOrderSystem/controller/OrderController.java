@@ -35,7 +35,7 @@ public class OrderController {
     public ResponseEntity<Resource> returnImage(@RequestParam(value = "store") String store,
                                          @RequestParam(value = "menu") String menu) throws MalformedURLException {
         //String path = "src/main/frontend/public/img/" + menu + ".jpg"; //이미지가 저장된 위치
-        String path = "http://jh9788.ipdisk.co.kr:8000/list/HDD1/project-image/" + menu + ".jpg";
+        String path = "http://jh9788.ipdisk.co.kr:8000/list/HDD1/project-image/user-test/" + menu + ".jpg";
         //Resource resource = new FileSystemResource(path);
         Resource resource = new UrlResource(path);
 
