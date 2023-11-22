@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -23,14 +24,12 @@ public class JwtLoginApiController {
         if(ownerService.checkLoginIdDuplicate(joinRequest.getId())) {
             return "로그인 아이디가 중복됩니다.";
         }
-        // password 와 passwordCheck 가 같은지 체크
-        /*
-            if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
+
+        // password와 passwordCheck가 같은지 체크
+        if(!joinRequest.getPassword().equals(joinRequest.getPasswordCheck())) {
             return "바밀번호가 일치하지 않습니다.";
         }
-        */
 
-        System.out.println("JwtLoginApiController.join");
         ownerService.join(joinRequest);
         return "회원가입 성공";
     }

@@ -17,6 +17,7 @@ public class JoinRequest {
     private String name;
     @NotBlank(message = "비밀번호를 입력해주세요.")
     private String password;
+    @NotBlank(message = "비밀번호를 한번 더 입력해주세요.")
     private String passwordCheck;
     @NotBlank(message = "이메일을 입력해주세요.")
     private String email;
@@ -33,6 +34,7 @@ public class JoinRequest {
                 .id(this.id)
                 .password(this.password)
                 .email(this.email)
+                .name(this.name)
                 .gender(this.gender)
                 .phoneNumber(this.phoneNumber)
                 //.role(UserRole.ROLE_USER)
@@ -44,6 +46,7 @@ public class JoinRequest {
         return Owner.builder()
                 .id(this.id)
                 .password(encodedPassword)
+                .name(this.name)
                 .email(this.email)
                 .gender(this.gender)
                 .phoneNumber(this.phoneNumber)
